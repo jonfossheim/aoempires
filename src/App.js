@@ -15,13 +15,16 @@ function App() {
 
    return (
       <div className='App'>
-         {civs?.length > 0 ? (
-            <div className={'wrapper'}>
-               {civs.map((civ, idx) => (
-                  <Civilization key={idx} {...civ} />
-               ))}
-            </div>
-         ) : null}
+         <>
+            <h1>Kekw bndk</h1>
+            {civs?.length > 0 ? (
+               <div className={'wrapper'}>
+                  {civs.map((civ, idx) => (
+                     <Civilization key={idx} {...civ} />
+                  ))}
+               </div>
+            ) : null}
+         </>
       </div>
    );
 }
