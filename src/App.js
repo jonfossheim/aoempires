@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Civilization from './components/Civilization';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const [civs, setCivs] = useState([]);
+
+   useEffect(() => {
+      axios
+         .get(
+            'https://cors-anywhere.herokuapp.com/https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations'
+         )
+         .then((res) => setCivs(res.data.civilizations));
+   }, []);
+
+   return (
+      <div className='App'>
+         {civs?.length > 0 ? (
+            <div className={'wrapper'}>
+               {civs.map((civ, idx) => (
+                  <Civilization key={idx} {...civ} />
+               ))}
+            </div>
+         ) : null}
+      </div>
+   );
 }
 
 export default App;
