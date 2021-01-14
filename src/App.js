@@ -16,7 +16,6 @@ function App() {
    return (
       <div className='App'>
          <>
-            <h1>Kekw bndk</h1>
             {civs?.length > 0 ? (
                <div className={'wrapper'}>
                   {civs.map((civ, idx) => (
